@@ -1,0 +1,9 @@
+{
+    "author":"Per0x1d3",
+    "challengeName":"shop of life",
+    "challengeDescription" :"tbd",
+    "minPoints": 100,
+    "maxPoints": 500,
+    "category":"web",
+    "flag":"flag{0rtt_replay_attacks_4r3_c00l}"
+}

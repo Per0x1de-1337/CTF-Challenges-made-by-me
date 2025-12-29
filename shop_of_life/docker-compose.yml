@@ -1,0 +1,26 @@
+version: "3"
+services:
+  haproxy:
+    build:
+      context: ./haproxy
+      dockerfile: Dockerfile
+    ports:
+      - "0.0.0.0:6016:6016/tcp"
+      - "0.0.0.0:6016:6016/udp"
+    depends_on:
+      - backend-server
+      - redis
+  backend-server:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - redis
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "no"]
+    ports:
+      - "127.0.0.1:6379:6379"
+
